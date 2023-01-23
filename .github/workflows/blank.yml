@@ -1,0 +1,41 @@
+import pygame
+
+# Initialize pygame
+pygame.init()
+
+# Set screen size and caption
+size = (700, 500)
+screen = pygame.display.set_mode(size)
+pygame.display.set_caption("Mario Game")
+
+# Load Mario image
+mario_image = pygame.image.load("mario.png")
+
+# Set Mario initial position
+mario_x = 50
+mario_y = 50
+
+# Main game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Move Mario
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT]:
+        mario_x -= 5
+    if keys[pygame.K_RIGHT]:
+        mario_x += 5
+    if keys[pygame.K_UP]:
+        mario_y -= 5
+    if keys[pygame.K_DOWN]:
+        mario_y += 5
+
+    # Draw Mario on screen
+    screen.blit(mario_image, (mario_x, mario_y))
+    pygame.display.flip()
+
+# Exit pygame
+pygame.quit()
